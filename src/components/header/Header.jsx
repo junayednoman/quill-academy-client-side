@@ -9,7 +9,7 @@ const Header = () => {
         <li className="text-[15px]"><Link className=" duration-500" to='/teach'>Teach On QuillAcademy</Link></li>
     </>
     return (
-        <div className="max-w-screen-2xl px-2 sm:px-4 md:px-8  lg:px-12 xl:mx-auto xl:px-14 py-2 md:py-4">
+        <div className="max-w-screen-xl px-2 sm:px-4 md:px-8  lg:px-12 xl:mx-auto xl:px-14 py-2 md:py-4">
             <div className="navbar justify-between bg-base-100 px-0">
                 <div className="lg:navbar-start w-full justify-between lg:flex-row flex-row-reverse">
                     <div className="dropdown">

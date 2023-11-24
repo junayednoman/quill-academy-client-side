@@ -1,23 +1,49 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto:wght@400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Lato&family=Roboto+Condensed:wght@500;600;700&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
 
-body {
-    font-family: 'Roboto', sans-serif;
-}
+  body {
+      font-family: 'Lato', sans-serif;
+  }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+      font-family: 'Roboto Condensed', sans-serif;
+  }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: 'Archivo Black', sans-serif;
-}
+  .navbar .menu a:hover {
+      background: #3673be11;
+  }
 
-.navbar .menu a:hover {
-    background: #3673be11;
-}
+  .sectionH {
+      position: relative;
+      z-index: 10;
+  }
+
+  .sectionH::after {
+      content: "";
+      position: absolute;
+      top: 20px;
+      left: 43%;
+      background-image: url(../src/assets/line.png);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      height: 100%;
+      z-index: -1;
+      width: 14%;
+  }
+
+  @media (min-width: 250px) and (max-width: 640px) {
+    .sectionH::after {
+        top: 20px;
+        left: 33%;
+        width: 35%;
+    }
+  }
