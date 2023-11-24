@@ -2,7 +2,6 @@ import SectionTitle from "../../../components/section title/SectionTitle";
 import udemyImg from '../../../assets/udemy.png'
 import udacityImg from '../../../assets/udacity.png'
 import courseraImg from '../../../assets/coursera.png'
-import futureImg from '../../../assets/future.png'
 import khanImg from '../../../assets/khan.png'
 import liversityImg from '../../../assets/liversity.png'
 import treeImg from '../../../assets/tree.png'
@@ -10,7 +9,7 @@ import Container from "../../../components/container/Container";
 
 const Partners = () => {
     return (
-        <div className="pb-8 md:pb-12 lg:pb-24">
+        <div className="py-10 md:py-12 lg:py-20 mb-5 md:mb-8 lg:mb-12 bg-[#3871c10d]">
             <Container>
                 <SectionTitle heading='Trusted Partners' subHeading="Empowering Education with World's Leading Companies"></SectionTitle>
 

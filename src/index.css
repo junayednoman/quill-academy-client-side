@@ -7,6 +7,10 @@
   body {
       font-family: 'Lato', sans-serif;
   }
+  body ::selection{
+    background: #3871C1;
+    color: white;
+  }
 
   h1,
   h2,
@@ -39,11 +43,28 @@
       z-index: -1;
       width: 14%;
   }
-
+  .swiper{
+    padding: 20px !important;
+    padding-bottom: 50px !important;
+  }
+  .swiper-pagination{
+    bottom: 0 !important;
+  }
+  .swiper-pagination-bullet{
+    width: 10px !important;
+    height: 10px !important;
+  }
+  :root {
+    --swiper-theme-color: #3871C1 !important;
+}
   @media (min-width: 250px) and (max-width: 640px) {
     .sectionH::after {
         top: 20px;
         left: 33%;
         width: 35%;
     }
+    .swiper{
+        padding: 10px !important;
+        padding-bottom: 40px !important;
+      }
   }

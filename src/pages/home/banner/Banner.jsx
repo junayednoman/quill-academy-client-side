@@ -4,7 +4,7 @@ import Container from "../../../components/container/Container";
 
 const Banner = () => {
     return (
-        <div className="py-14 md:py-16">
+        <div className="py-12 md:py-14">
             <Container>
                 <div className='grid items-center md:grid-cols-3 md:gap-8 grid-cols-1 gap-5'>
                     <div className="md:col-span-2 md:text-left text-center">

@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import lineImg from '../../assets/line.png'
 
 const SectionTitle = ({ heading, subHeading }) => {
     return (
