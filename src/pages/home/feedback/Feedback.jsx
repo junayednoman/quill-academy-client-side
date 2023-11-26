@@ -3,9 +3,9 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import Container from '../../../components/container/Container';
-import feedbackImg from '../../../assets/feedback.jpg'
 import { useQuery } from '@tanstack/react-query';
 import useAxiosPublic from '../../../custom hooks/axios public/useAxiosPublic';
+import SectionTitle from '../../../components/section title/SectionTitle';
 const Feedback = () => {
     const axiosPublic = useAxiosPublic();
 
@@ -16,10 +16,10 @@ const Feedback = () => {
             return res.data;
         }
     })
-    console.log(feedbacks);
     return (
         <div className='lg:pb-24 md:pb-16 pb-12'>
             <Container>
+                <SectionTitle heading='Student Voices' subHeading='What Our Learners Are Saying About QuillAcademy' line={true}></SectionTitle>
                 <Swiper navigation={true} modules={[Navigation]} className="mySwiper feedSwiper border">
                     {
                         feedbacks.map(feedback => <SwiperSlide key={feedback._id}>

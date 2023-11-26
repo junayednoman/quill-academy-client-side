@@ -7,6 +7,7 @@ import Feedback from "./feedback/Feedback";
 import Stats from "./stats/Stats";
 import Cta from "../../components/cta/Cta";
 import Container from "../../components/container/Container";
+import Category from "./categories/Category";
 
 const Home = () => {
 
@@ -18,6 +19,7 @@ const Home = () => {
             <Banner></Banner>
             <Partners></Partners>
             <Recommended></Recommended>
+            <Category></Category>
             <Feedback></Feedback>
             <Stats></Stats>
             <BecomeTeacher></BecomeTeacher>

@@ -5,9 +5,10 @@
   @tailwind utilities;
 
   body {
-      font-family: 'Lato', sans-serif;
+    font-family: 'Lato', sans-serif;
   }
-  body ::selection{
+
+  body ::selection {
     background: #3871C1;
     color: white;
   }
@@ -18,64 +19,82 @@
   h4,
   h5,
   h6 {
-      font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
   }
 
   .navbar .menu a:hover {
-      background: #3673be11;
+    background: #3673be11;
   }
 
   .sectionH {
-      position: relative;
-      z-index: 10;
+    position: relative;
+    z-index: 10;
   }
 
   .sectionH::after {
-      content: "";
-      position: absolute;
-      top: 20px;
-      left: 43%;
-      background-image: url(../src/assets/line.png);
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: contain;
-      height: 100%;
-      z-index: -1;
-      width: 14%;
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 43%;
+    background-image: url(../src/assets/line.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    height: 100%;
+    z-index: -1;
+    width: 14%;
   }
-  .swiper{
+
+  .swiper {
     padding: 20px !important;
     padding-bottom: 50px !important;
   }
-  .feedSwiper.swiper{
+
+  .feedSwiper.swiper {
     padding: 0px !important;
     padding-bottom: 0px !important;
   }
-  .swiper-pagination{
+
+  .CategoryClassesSwiper.swiper {
+    padding: 0px 3px !important;
+    padding-bottom: 35px !important;
+  }
+
+  .swiper-pagination {
     bottom: 0 !important;
   }
-  .swiper-pagination-bullet{
+
+  .swiper-pagination-bullet {
     width: 10px !important;
     height: 10px !important;
   }
+
   :root {
     --swiper-theme-color: #3871C1 !important;
-}
+  }
+
+  .lotti_animation {
+    width: 250px;
+    margin: 0 auto;
+  }
+
   @media (min-width: 250px) and (max-width: 640px) {
     .sectionH::after {
-        top: 20px;
-        left: 33%;
-        width: 35%;
+      top: 20px;
+      left: 33%;
+      width: 35%;
     }
-    .swiper{
-        padding: 10px !important;
-        padding-bottom: 40px !important;
-      }
 
-      .swiper-button-next{
-        display: none !important;
-      }
-      .swiper-button-prev{
-        display: none !important;
-      }
+    .swiper {
+      padding: 10px !important;
+      padding-bottom: 40px !important;
+    }
+
+    .swiper-button-next {
+      display: none !important;
+    }
+
+    .swiper-button-prev {
+      display: none !important;
+    }
   }

@@ -3,24 +3,28 @@
         "name": "William Campbrain",
         "image": "https://i.postimg.cc/h4C4tRmG/feedback.jpg",
         "text": "I've been using QuillAcademy for a few months now, and I'm blown away by the quality of courses and the interactive learning experience. The platform is user-friendly, and the variety of subjects is impressive.",
-        "course": "Python for Beginners"
+        "course": "Python for Beginners",
+        "category": "web"
     },
     {
         "name": "John Doe",
         "image": "https://i.postimg.cc/h4C4tRmG/feedback.jpg",
         "text": "I've been using QuillAcademy for a few months now, and I'm blown away by the quality of courses and the interactive learning experience. The platform is user-friendly, and the variety of subjects is impressive.",
-        "course": "Mern Stack for Beginners"
+        "course": "Mern Stack for Beginners",
+        "category": "web"
     },
     {
         "name": "Ahmed Hassan",
         "image": "https://i.postimg.cc/h4C4tRmG/feedback.jpg",
         "text": "I've been using QuillAcademy for a few months now, and I'm blown away by the quality of courses and the interactive learning experience. The platform is user-friendly, and the variety of subjects is impressive.",
-        "course": "Python for Beginners"
+        "course": "Graphic design",
+        "category": ""
     },
     {
         "name": "Tarik Jamil",
         "image": "https://i.postimg.cc/h4C4tRmG/feedback.jpg",
         "text": "I've been using QuillAcademy for a few months now, and I'm blown away by the quality of courses and the interactive learning experience. The platform is user-friendly, and the variety of subjects is impressive.",
-        "course": "Digital Marketing for Beginners"
+        "course": "Digital Marketing for Beginners",
+        "category": ""
     }
 ]

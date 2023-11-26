@@ -4,6 +4,8 @@ import { FaUserFriends } from "react-icons/fa";
 import PropTypes from 'prop-types';
 const ClassCard = ({classItem}) => {
     const {title, image, price, short_description, enrolled_students, teacher_name } = classItem;
+
+    
     return (
         <div>
             <div className="card w-full bg-base-100 shadow-md rounded-md">
