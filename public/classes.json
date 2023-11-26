@@ -1,0 +1,66 @@
+[
+    {
+        "title": "Javascript for Beginners",
+        "image": "https://yourengineer.in/wp-content/uploads/2022/08/Javascript-Cover-1024x576.png",
+        "teacher_name": "John Doe",
+        "short_description": "If a dog chews shoes whose shoes does he choose? Chews shoes whose shoes.",
+        "price": 40,
+        "enrolled_students": 350
+    },
+    {
+        "title": "Digital Marketing for Beginners",
+        "image": "https://yourengineer.in/wp-content/uploads/2022/08/Javascript-Cover-1024x576.png",
+        "teacher_name": "John Smith",
+        "short_description": "If a dog chews shoes whose shoes does he choose? Chews shoes whose shoes.",
+        "price": 45,
+        "enrolled_students": 380
+    },
+    {
+        "title": "Python for Beginners",
+        "image": "https://yourengineer.in/wp-content/uploads/2022/08/Javascript-Cover-1024x576.png",
+        "teacher_name": "David Warner",
+        "short_description": "If a dog chews shoes whose shoes does he choose? Chews shoes whose shoes.",
+        "price": 30,
+        "enrolled_students": 450
+    },
+    {
+        "title": "Mern Stack for Beginners",
+        "image": "https://yourengineer.in/wp-content/uploads/2022/08/Javascript-Cover-1024x576.png",
+        "teacher_name": "Ahmed Nasir",
+        "short_description": "If a dog chews shoes whose shoes does he choose? Chews shoes whose shoes.",
+        "price": 60,
+        "enrolled_students": 432
+    },
+    {
+        "title": "Graphics Design for Beginners",
+        "image": "https://yourengineer.in/wp-content/uploads/2022/08/Javascript-Cover-1024x576.png",
+        "teacher_name": "Jakir Hossain",
+        "short_description": "If a dog chews shoes whose shoes does he choose? Chews shoes whose shoes.",
+        "price": 72,
+        "enrolled_students": 320
+    },
+    {
+        "title": "Machine Learning for Beginners",
+        "image": "https://yourengineer.in/wp-content/uploads/2022/08/Javascript-Cover-1024x576.png",
+        "teacher_name": "Ashraf Ahmed",
+        "short_description": "If a dog chews shoes whose shoes does he choose? Chews shoes whose shoes.",
+        "price": 54,
+        "enrolled_students": 300
+    },
+    {
+        "title": "SEO for Beginners",
+        "image": "https://yourengineer.in/wp-content/uploads/2022/08/Javascript-Cover-1024x576.png",
+        "teacher_name": "Ashraf Ahmed",
+        "short_description": "If a dog chews shoes whose shoes does he choose? Chews shoes whose shoes.",
+        "price": 54,
+        "enrolled_students": 390
+    },
+    {
+        "title": "Digital Marketing for Beginners",
+        "image": "https://yourengineer.in/wp-content/uploads/2022/08/Javascript-Cover-1024x576.png",
+        "teacher_name": "Ashraf Ahmed",
+        "short_description": "If a dog chews shoes whose shoes does he choose? Chews shoes whose shoes.",
+        "price": 54,
+        "enrolled_students": 360
+    }
+]

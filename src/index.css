@@ -47,6 +47,10 @@
     padding: 20px !important;
     padding-bottom: 50px !important;
   }
+  .feedSwiper.swiper{
+    padding: 0px !important;
+    padding-bottom: 0px !important;
+  }
   .swiper-pagination{
     bottom: 0 !important;
   }
@@ -66,5 +70,12 @@
     .swiper{
         padding: 10px !important;
         padding-bottom: 40px !important;
+      }
+
+      .swiper-button-next{
+        display: none !important;
+      }
+      .swiper-button-prev{
+        display: none !important;
       }
   }

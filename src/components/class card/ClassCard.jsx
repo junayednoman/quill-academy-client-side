@@ -1,25 +1,25 @@
 import { BsCurrencyDollar } from "react-icons/bs";
 import { FaUserFriends } from "react-icons/fa";
 
-
-
-const ClassCard = () => {
+import PropTypes from 'prop-types';
+const ClassCard = ({classItem}) => {
+    const {title, image, price, short_description, enrolled_students, teacher_name } = classItem;
     return (
         <div>
             <div className="card w-full bg-base-100 shadow-md rounded-md">
-                <figure><img src="https://yourengineer.in/wp-content/uploads/2022/08/Javascript-Cover-1024x576.png" alt="Shoes" /></figure>
+                <figure><img className="hover:scale-105 duration-500" src={image} alt="Shoes" /></figure>
                 <div className="card-body p-5">
-                    <h2 className="card-title">Javascript for Beginners</h2>
-                    <h4><span>By: </span>John Doe</h4>
-                    <p>If a dog chews shoes whose shoes does he choose? Chews shoes whose shoes</p>
+                    <h2 className="card-title">{title}</h2>
+                    <h4><span>By: </span>{teacher_name}</h4>
+                    <p>{short_description}</p>
                     <div className="flex justify-between items-center">
                         <div className="flex items-center">
                             <BsCurrencyDollar></BsCurrencyDollar>
-                            <p>50</p>
+                            <p>{price}</p>
                         </div>
                         <div className="flex gap-1 justify-between items-center">
                         <FaUserFriends />
-                            <p>250</p>
+                            <p>{enrolled_students}</p>
                         </div>
                     </div>
                     <div className="card-actions w-full">
@@ -30,5 +30,9 @@ const ClassCard = () => {
         </div>
     );
 };
+
+ClassCard.propTypes={
+    classItem: PropTypes.object,
+}
 
 export default ClassCard;
