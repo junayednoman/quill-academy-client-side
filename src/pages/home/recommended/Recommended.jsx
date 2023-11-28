@@ -22,11 +22,10 @@ const Recommended = () => {
             return res.data;
         }
     })
-    console.log(classes);
     return (
         <div className="py-10 md:py-12 lg:py-20">
             <Container>
-                <SectionTitle heading='Recommended Courses' line={true} subHeading="Discover handpicked courses tailored to enhance your skills and accelerate your journey towards success"></SectionTitle>
+                <SectionTitle heading='Recommended Courses' shape={true} subHeading="Discover handpicked courses tailored to enhance your skills and accelerate your journey towards success"></SectionTitle>
                 <Swiper
                     // slidesPerView={1}
                     spaceBetween={25}

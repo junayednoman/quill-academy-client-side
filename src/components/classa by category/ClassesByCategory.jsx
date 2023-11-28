@@ -15,7 +15,7 @@ const ClassesByCategory = ({ category, classes }) => {
         <div className="lg:pb-6 md:pb-5 pb-8">
             <Container>
                 <div className="mb-5">
-                    <h3 className="md:text-3xl text-2xl pb-2 border-b border-[#3871C1]">{category}</h3>
+                    <h3 className="md:text-3xl text-2xl capitalize pb-2 border-b border-[#3871C1]">{category}</h3>
                 </div>
                 <Swiper
                     // slidesPerView={1}
@@ -52,8 +52,7 @@ const ClassesByCategory = ({ category, classes }) => {
 
 ClassesByCategory.propTypes = {
     category: PropTypes.string,
-    classes: PropTypes.object,
-    isPending: PropTypes.boolean,
+    classes: PropTypes.array,
 }
 
 export default ClassesByCategory;

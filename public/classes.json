@@ -6,7 +6,7 @@
         "short_description": "If a dog chews shoes whose shoes does he choose? Chews shoes whose shoes.",
         "price": 40,
         "enrolled_students": 350,
-        "category": "web"
+        "category": "web-development"
     },
     {
         "title": "Digital Marketing for Beginners",
@@ -24,7 +24,7 @@
         "short_description": "If a dog chews shoes whose shoes does he choose? Chews shoes whose shoes.",
         "price": 30,
         "enrolled_students": 450,
-        "category": "web"
+        "category": "web-development"
     },
     {
         "title": "Mern Stack for Beginners",
@@ -33,7 +33,7 @@
         "short_description": "If a dog chews shoes whose shoes does he choose? Chews shoes whose shoes.",
         "price": 60,
         "enrolled_students": 432,
-        "category": "web"
+        "category": "web-development"
     },
     {
         "title": "Graphics Design for Beginners",
@@ -69,7 +69,7 @@
         "short_description": "If a dog chews shoes whose shoes does he choose? Chews shoes whose shoes.",
         "price": 54,
         "enrolled_students": 395,
-        "category": "security"
+        "category": "cyber-security"
     },
     {
         "title": "Ethical hacking for beginners",
@@ -78,7 +78,7 @@
         "short_description": "If a dog chews shoes whose shoes does he choose? Chews shoes whose shoes.",
         "price": 56,
         "enrolled_students": 723,
-        "category": "security"
+        "category": "cyber-security"
     },
     {
         "title": "Advance Ethical hacking",
@@ -87,7 +87,7 @@
         "short_description": "If a dog chews shoes whose shoes does he choose? Chews shoes whose shoes.",
         "price": 57,
         "enrolled_students": 645,
-        "category": "security"
+        "category": "cyber-security"
     },
     {
         "title": "SEO for Beginners",
@@ -114,7 +114,7 @@
         "short_description": "If a dog chews shoes whose shoes does he choose? Chews shoes whose shoes.",
         "price": 89,
         "enrolled_students": 487,
-        "category": "app"
+        "category": "app-development"
     },
     {
         "title": "Mastering Cross-Platform Apps",
@@ -123,7 +123,7 @@
         "short_description": "If a dog chews shoes whose shoes does he choose? Chews shoes whose shoes.",
         "price": 34,
         "enrolled_students": 348,
-        "category": "app"
+        "category": "app-development"
     },
     {
         "title": "Advanced Android Development",
@@ -132,6 +132,6 @@
         "short_description": "If a dog chews shoes whose shoes does he choose? Chews shoes whose shoes.",
         "price": 34,
         "enrolled_students": 984,
-        "category": "app"
+        "category": "app-development"
     }
 ]

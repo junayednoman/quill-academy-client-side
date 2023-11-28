@@ -4,7 +4,7 @@ const Footer = () => {
     const menu = <>
         <li className="text-[15px]"><Link className=" duration-500" to='/'>Home</Link></li>
         <li className="text-[15px]"><Link className=" duration-500" to='/classes'>All Classes</Link></li>
-        <li className="text-[15px]"><Link className=" duration-500" to='/teach'>Teach On QuillAcademy</Link></li>
+        <li className="text-[15px] sm:block hidden"><Link className=" duration-500" to='/tech-on-quillAcademy'>Teach On QuillAcademy</Link></li>
         <li className="text-[15px]"><Link className=" duration-500" to='/login'>Login</Link></li>
     </>
     return (

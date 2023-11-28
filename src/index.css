@@ -74,8 +74,25 @@
   }
 
   .lotti_animation {
-    width: 250px;
+    width: 230px;
     margin: 0 auto;
+  }
+
+  .dropdown-content {
+    border-radius: 5px;
+    /* border: 1px solid #3771c26a; */
+  }
+
+
+  .dropdown-content a {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 5px 10px;
+  }
+
+  .dropdown-content .userName {
+    padding: 5px 10px;
   }
 
   @media (min-width: 250px) and (max-width: 640px) {

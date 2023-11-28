@@ -10,19 +10,21 @@ import handAnimation from '../../../public/hand.json'
 
 const Classes = () => {
     const axiosPublic = useAxiosPublic();
-    const { data: classes = [], isPending } = useQuery({
+    const { data: classes, isPending } = useQuery({
         queryKey: 'all-classes',
         queryFn: async () => {
             const res = await axiosPublic.get('/all-classes');
             return res.data;
         }
     })
+    console.log(classes);
     // console.log(classes);
-    const webClasses = classes.filter(item => item.category === 'web');
-    const graphicsClasses = classes.filter(item => item.category === 'graphics');
-    const securityClasses = classes.filter(item => item.category === 'security');
-    const appClasses = classes.filter(item => item.category === 'app');
-    const digitalMarketingClasses = classes.filter(item => item.category === 'digital-marketing');
+    // console.log(classes);
+    const webClasses = classes?.filter(item => item.category === 'web-development');
+    const graphicsClasses = classes?.filter(item => item.category === 'graphics');
+    const securityClasses = classes?.filter(item => item.category === 'cyber-security');
+    const appClasses = classes?.filter(item => item.category === 'app-development');
+    const digitalMarketingClasses = classes?.filter(item => item.category === 'digital-marketing');
     return (
         <div className="min-h-[59vh]">
             <Helmet>
@@ -30,7 +32,6 @@ const Classes = () => {
             </Helmet>
             <div className="md:py-20 py-12 bg-[#3871C1]">
                 <h2 className="text-center text-white text-[38px] md:text-[52px] md:leading-[80px] leading-[55px]">All Classes at a Glance</h2>
-
             </div>
 
             {

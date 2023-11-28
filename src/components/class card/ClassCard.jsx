@@ -2,10 +2,10 @@ import { BsCurrencyDollar } from "react-icons/bs";
 import { FaUserFriends } from "react-icons/fa";
 
 import PropTypes from 'prop-types';
-const ClassCard = ({classItem}) => {
-    const {title, image, price, short_description, enrolled_students, teacher_name } = classItem;
+import { Link } from "react-router-dom";
+const ClassCard = ({ classItem }) => {
+    const { title, image, price, short_description, enrolled_students, teacher_name, _id } = classItem;
 
-    
     return (
         <div>
             <div className="card w-full bg-base-100 shadow-md rounded-md">
@@ -15,17 +15,19 @@ const ClassCard = ({classItem}) => {
                     <h4><span>By: </span>{teacher_name}</h4>
                     <p>{short_description}</p>
                     <div className="flex justify-between items-center">
-                        <div className="flex items-center">
+                        <div className="flex items-center tooltip tooltip-right" data-tip="Price">
                             <BsCurrencyDollar></BsCurrencyDollar>
                             <p>{price}</p>
                         </div>
-                        <div className="flex gap-1 justify-between items-center">
-                        <FaUserFriends />
+                        <div data-tip="Enrolled Students" className="flex tooltip tooltip-bottom gap-1 justify-between items-center">
+                            <FaUserFriends />
                             <p>{enrolled_students}</p>
                         </div>
                     </div>
                     <div className="card-actions w-full">
-                        <button className="rounded-[4px] font-medium text-white py-1 px-3 bg-[#3871C1]">Enroll Now</button>
+                        <Link to={`/class/${_id}`}>
+                            <button className="rounded-[4px] font-medium text-white py-2 px-4 bg-[#3871C1]">Enroll Now</button>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -33,7 +35,7 @@ const ClassCard = ({classItem}) => {
     );
 };
 
-ClassCard.propTypes={
+ClassCard.propTypes = {
     classItem: PropTypes.object,
 }
 
