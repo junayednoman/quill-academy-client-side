@@ -1,12 +1,89 @@
 import { Helmet } from "react-helmet-async";
+import useAuth from "../../custom hooks/axios public/use auth/useAuth";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../custom hooks/axios secure/useAxiosSecure";
+import SectionTitle from "../../components/section title/SectionTitle";
+import Container from "../../components/container/Container";
 
 const MyEnrolledClasses = () => {
+    const { user, loading } = useAuth();
+    const axiosSecure = useAxiosSecure();
+
+    // const { data: ids = [] } = useQuery({
+    //     queryKey: 'classIds',
+    //     queryFn: async () => {
+    //         const res = await axiosSecure.get(`/payments/ids/junayednoman05@gmail.com`);
+    //         return res.data;
+    //     }
+    // })
+    // console.log('ids,', ids);
+
+    const { data: enrolledClasses, isPending } = useQuery({
+
+        queryKey: 'dash-user',
+
+        queryFn: async () => {
+            if (loading) {
+                return;
+            }
+            const res = await axiosSecure.get(`/classes/enrolled/${user?.email}`)
+            return res.data;
+        }
+    })
+    console.log('enrolledClasses', enrolledClasses);
+    if (isPending) {
+        return <div className="h-[80vh] flex justify-center items-center"><span className="loading loading-spinner loading-lg"></span></div>
+    }
+
     return (
-        <div>
+        <div className="md:py-20 py-10">
             <Helmet>
                 <title>Enrolled Classes | Dashboard | QuillAcademy - Gateway to Learning</title>
             </Helmet>
-            MyEnrolledClasses
+            <Container>
+                <SectionTitle heading={'My Enrolled Classes'}></SectionTitle>
+
+                <div className="overflow-x-auto">
+                    <table className="table">
+                        {/* head */}
+                        <thead>
+                            <tr className="text-base">
+                                <th>No.</th>
+                                <th>Image</th>
+                                <th>Title</th>
+                                <th>Teacher</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                enrolledClasses.map((classInfo, idx) =>
+                                    <tr key={classInfo._id}>
+                                        <th>
+                                            {idx + 1}
+                                        </th>
+                                        <td>
+                                            <div className="flex items-center gap-3">
+                                                <div className="avatar border rounded-md">
+                                                    <div className="w-16">
+                                                        <img src={classInfo.image} />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>{classInfo.title}</td>
+                                        <td>{classInfo.teacher_name}</td>
+                                        <td>
+                                            <div className="space-y-2">
+                                                <button className="text-[#3871C1] underline block rounded-sm ">Continue</button>
+                                            </div>
+                                        </td>
+                                    </tr>)
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </Container>
         </div>
     );
 };

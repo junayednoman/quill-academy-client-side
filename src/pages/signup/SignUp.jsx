@@ -25,6 +25,7 @@ const SignUp = () => {
     const handleSignUp = (data) => {
         const name = data.name;
         const image = data.image;
+        const phone = data.phone;
         const email = data.email;
         const password = data.password;
         createUser(email, password)
@@ -34,7 +35,7 @@ const SignUp = () => {
                         displayName: name, photoURL: image
                     })
                         .then(() => {
-                            axiosPublic.post('/users', { name, email, image, role: 'user' })
+                            axiosPublic.post('/users', { name, email, phone, image, role: 'user' })
                                 .then(result => {
                                     if (result.data.insertedId) {
                                         Swal.fire({
@@ -86,6 +87,12 @@ const SignUp = () => {
                                     <span className="label-text">Image URL</span>
                                 </label>
                                 <input {...register('image')} type="text" placeholder="Image..." className="input input-bordered rounded-[4px]" required />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Phone Number</span>
+                                </label>
+                                <input {...register('phone')} type="text" placeholder="Phone..." className="input input-bordered rounded-[4px]" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">

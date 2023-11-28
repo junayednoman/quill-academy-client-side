@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import useAxiosPublic from '../../../custom hooks/axios public/useAxiosPublic';
 import useAuth from '../../../custom hooks/axios public/use auth/useAuth';
 import PropTypes from 'prop-types'
+import { useNavigate } from 'react-router-dom';
 
 const CheckOutForm = ({ classInfo }) => {
     const { user } = useAuth();
@@ -12,6 +13,7 @@ const CheckOutForm = ({ classInfo }) => {
     const elements = useElements();
     const [clientSecret, setClientSecret] = useState('');
     const axiosSecure = useAxiosPublic();
+    const navigate = useNavigate()
 
     useEffect(() => {
         axiosSecure.post('/payment-intent', classInfo)
@@ -65,12 +67,14 @@ const CheckOutForm = ({ classInfo }) => {
 
             // update user's role to student
             // const updateRole = {role: 'student'}
-            axiosSecure.patch(`/users/${user.email}`, {role: 'student'})
-            .then(res=>{
-                console.log(res.data);
-            })
+            const roleUpdate = await axiosSecure.patch(`/users/${user.email}`, { role: 'student' });
+
             // post payment data todb
             const res = await axiosSecure.post('/payments', paymentInfo)
+            console.log(res.data);
+            if (res.data.insertedId ) {
+                navigate('/dashboard/my-classes')
+            }
 
 
         }

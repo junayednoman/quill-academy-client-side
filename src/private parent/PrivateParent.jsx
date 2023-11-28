@@ -10,7 +10,7 @@ const PrivateParent = ({ children }) => {
     const location = useLocation();
 
     if (loading) {
-        return <div className="h-[50vh] flex justify-center items-center"><Lottie className="lotti_animation" width={30} height={30} animationData={handAnimation} loop={true} /></div>
+        return <div className="h-[70vh] flex justify-center items-center"><Lottie className="lotti_animation" width={30} height={30} animationData={handAnimation} loop={true} /></div>
     } else if (!user) {
         return <Navigate to={'/login'} state={{ from: location }} replace ></Navigate>
     }

@@ -1,24 +1,17 @@
 import { NavLink, Outlet } from "react-router-dom";
-import logo from '../../assets/dash-logo.png'
+import logo from '../../assets/dash-logo.png';
 import { MdOutlineOndemandVideo } from "react-icons/md";
 import { FaChalkboardTeacher, FaHome, FaList, FaRegUser, FaUserTie, FaUsers } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
-import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../custom hooks/axios secure/useAxiosSecure";
 import useAuth from "../../custom hooks/axios public/use auth/useAuth";
-import Lottie from "lottie-react";
-import handAnimation from '../../../public/hand.json'
-import { useState } from "react";
 import useUserRole from "../../custom hooks/user role/useUserRole";
 
 
 const Dashboard = () => {
-    const {loading} = useAuth()
+    const { loading } = useAuth()
     const { role, isPending } = useUserRole();
-
-    console.log(loading);
     if (isPending || loading) {
-        return <div className="h-[80vh] flex justify-center items-center"><Lottie className="lotti_animation" width={30} height={30} animationData={handAnimation} loop={true} /></div>
+        return;
     }
     return (
         <div className="flex">
@@ -31,11 +24,13 @@ const Dashboard = () => {
                     <img src={logo} alt="" />
                 </div>
 
-                {/* for student */}
+                {/* for general users */}
                 {
                     role === 'user' &&
                     <div>
-
+                        <ul className="text-white space-y-3 menu">
+                            <li><NavLink to='/dashboard/profile' className='flex gap-1 items-center font-medium'><FaRegUser />My Profile</NavLink></li>
+                        </ul>
                     </div>
                 }
 
@@ -44,8 +39,8 @@ const Dashboard = () => {
                     role === 'student' &&
                     <div>
                         <ul className="text-white space-y-3 menu">
-                            <li><NavLink to='/dashboard/my-classes' className='flex gap-1 items-center font-medium'><MdOutlineOndemandVideo />My Enrolled Classes</NavLink></li>
-                            <li><NavLink to='/dashboard/my-profile' className='flex gap-1 items-center font-medium'><FaRegUser />My Profile</NavLink></li>
+                            <li><NavLink to='/dashboard/my-enrolled-classes' className='flex gap-1 items-center font-medium'><MdOutlineOndemandVideo />My Enrolled Classes</NavLink></li>
+                            <li><NavLink to='/dashboard/profile' className='flex gap-1 items-center font-medium'><FaRegUser />My Profile</NavLink></li>
                         </ul>
                     </div>
                 }
@@ -54,7 +49,10 @@ const Dashboard = () => {
                 {
                     role === 'teacher' &&
                     <div>
-                        teacher
+                        <ul className="text-white space-y-3 menu">
+                            <li><NavLink to='/dashboard/my-classes' className='flex gap-1 items-center font-medium'><MdOutlineOndemandVideo />My Classes</NavLink></li>
+                            <li><NavLink to='/dashboard/profile' className='flex gap-1 items-center font-medium'><FaRegUser />My Profile</NavLink></li>
+                        </ul>
                     </div>
                 }
 

@@ -19,7 +19,7 @@ const TeacherReq = () => {
     
 
     if (isPending) {
-        return <div className="h-[80vh] flex justify-center items-center"><Lottie className="lotti_animation" width={30} height={30} animationData={handAnimation} loop={true} /></div>
+        return <div className="h-[80vh] flex justify-center items-center"><span className="loading loading-spinner loading-lg"></span></div>
     }
 
     return (

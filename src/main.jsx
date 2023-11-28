@@ -24,6 +24,9 @@ import AllClasses from './dashboard/all classes/AllClasses';
 import Profile from './dashboard/profile/Profile';
 import Payment from './pages/payment/Payment';
 import MyEnrolledClasses from './dashboard/enrolled classes/MyEnrolledClasses';
+import AdminParent from './private parent/admin parent/AdminParent';
+import StudentParent from './private parent/student parent/StudentParent';
+import MyClasses from './dashboard/my classes/MyClasses';
 
 const router = createBrowserRouter([
   {
@@ -69,33 +72,43 @@ const router = createBrowserRouter([
   // dashboard start here
   {
     path: '/',
-    element: <Dashboard />,
+    element: <PrivateParent><Dashboard /></PrivateParent>,
     children: [
       {
         path: '/dashboard',
         element: ''
       },
+
+      //  -=-=-=-=-=--=-=-=-=-=- these routes aer only for admin -=-=-=-=-=--=-=-=-=-=-
       {
         path: '/dashboard/teacher-request',
-        element: <TeacherReq></TeacherReq>
+        element: <AdminParent><TeacherReq></TeacherReq></AdminParent>
       },
       {
         path: '/dashboard/users',
-        element: <Users></Users>
+        element: <AdminParent><Users></Users></AdminParent>
       },
       {
         path: '/dashboard/classes',
-        element: <AllClasses></AllClasses>
+        element: <AdminParent><AllClasses></AllClasses></AdminParent>
       },
+
+      //  -=-=-=-=-=--=-=-=-=-=- common for all type of users -=-=-=-=-=--=-=-=-=-=-
       {
         path: '/dashboard/profile',
-        element: <Profile></Profile>
+        element: <PrivateParent><Profile></Profile></PrivateParent>
       },
 
       //  -=-=-=-=-=--=-=-=-=-=- student routes -=-=-=-=-=--=-=-=-=-=-
       {
+        path: '/dashboard/my-enrolled-classes',
+        element: <StudentParent><MyEnrolledClasses></MyEnrolledClasses></StudentParent>
+      },
+
+      //  -=-=-=-=-=--=-=-=-=-=- Teacher's routes -=-=-=-=-=--=-=-=-=-=-
+      {
         path: '/dashboard/my-classes',
-        element: <MyEnrolledClasses></MyEnrolledClasses>
+        element: <MyClasses></MyClasses>
       },
     ]
   }
