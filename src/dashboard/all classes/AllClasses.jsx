@@ -1,15 +1,74 @@
 import { Helmet } from 'react-helmet-async';
 import Container from '../../components/container/Container';
+import useAxiosPublic from '../../custom hooks/axios public/useAxiosPublic';
+import { useQuery } from '@tanstack/react-query';
+import SectionTitle from '../../components/section title/SectionTitle';
 
 const AllClasses = () => {
+    const axiosPublic = useAxiosPublic();
+    const { data: classes = [], isPending } = useQuery({
+        queryKey: 'all-classes-dashboard',
+        queryFn: async () => {
+            const res = await axiosPublic.get('/all-classes')
+            return res.data
+        }
+    })
+    console.log(classes);
     return (
-        <div>
+        <div className='md:py-20 py-10'>
             <Helmet>
                 <title>All Classes | QuillAcademy - Gateway to Learning</title>
             </Helmet>
 
             <Container>
-                classes
+                <SectionTitle heading={'All Classes'} />
+
+                <div className="overflow-x-auto">
+                    <table className="table">
+                        {/* head */}
+                        <thead>
+                            <tr className="text-base">
+                                <th>No.</th>
+                                <th>Image</th>
+                                <th>Title</th>
+                                <th>Teacher Email</th>
+                                <th>Description</th>
+                                <th>Actions</th>
+                                <th>See Progress</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                classes.map((classItem, idx) =>
+                                    <tr key={classItem._id}>
+                                        <th>
+                                            {idx + 1}
+                                        </th>
+                                        <td>
+                                            <div className="flex items-center gap-3">
+                                                <div className="avatar border rounded-md">
+                                                    <div className="w-16">
+                                                        <img src={classItem.image} />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>{classItem.title}</td>
+                                        <td>{classItem.teacher_email}</td>
+                                        <td>{classItem.short_description}</td>
+                                        <td>
+                                            <div className="text-center flex items-center flex-col space-y-2">
+                                                <button className="text-[#3871C1] underline block rounded-sm ">Approve</button>
+                                                <button className="text-[#3871C1] underline block rounded-sm ">Reject</button>
+                                                
+                                            </div>
+                                        </td>
+                                        <td><button className="text-[#3871C1] underline block rounded-sm ">See Progress</button></td>
+                                    </tr>)
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </Container>
         </div>
     );

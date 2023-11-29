@@ -2,7 +2,6 @@ import ClassCard from "../../../components/class card/ClassCard";
 import Container from "../../../components/container/Container";
 import SectionTitle from "../../../components/section title/SectionTitle";
 import { Swiper, SwiperSlide } from 'swiper/react';
-
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/free-mode';
@@ -10,7 +9,6 @@ import 'swiper/css/pagination';
 import { FreeMode, Pagination } from 'swiper/modules';
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../custom hooks/axios public/useAxiosPublic";
-
 
 const Recommended = () => {
     const axiosPublic = useAxiosPublic();
@@ -22,6 +20,8 @@ const Recommended = () => {
             return res.data;
         }
     })
+
+
     return (
         <div className="py-10 md:py-12 lg:py-20">
             <Container>
@@ -54,13 +54,6 @@ const Recommended = () => {
                     }
 
                 </Swiper>
-
-                {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-5 gap-3">
-                    <ClassCard></ClassCard>
-                    <ClassCard></ClassCard>
-                    <ClassCard></ClassCard>
-                    <ClassCard></ClassCard>
-                </div> */}
             </Container>
         </div>
     );

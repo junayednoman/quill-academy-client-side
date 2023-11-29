@@ -27,6 +27,9 @@ import MyEnrolledClasses from './dashboard/enrolled classes/MyEnrolledClasses';
 import AdminParent from './private parent/admin parent/AdminParent';
 import StudentParent from './private parent/student parent/StudentParent';
 import MyClasses from './dashboard/my classes/MyClasses';
+import AddClass from './dashboard/add class/AddClass';
+import TeacherParent from './private parent/teacher parent/TeacherParent';
+import UpdateClass from './dashboard/update class/UpdateClass';
 
 const router = createBrowserRouter([
   {
@@ -109,6 +112,15 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/my-classes',
         element: <MyClasses></MyClasses>
+      },
+      {
+        path: '/dashboard/add-class',
+        element: <TeacherParent><AddClass></AddClass></TeacherParent>
+      },
+      {
+        path: '/dashboard/update-class/:id',
+        element: <TeacherParent><UpdateClass></UpdateClass></TeacherParent>,
+        loader: ({ params }) => fetch(`http://localhost:5000/classes/${params.id}`)
       },
     ]
   }

@@ -17,7 +17,6 @@ const Classes = () => {
             return res.data;
         }
     })
-    console.log(classes);
     // console.log(classes);
     // console.log(classes);
     const webClasses = classes?.filter(item => item.category === 'web-development');

@@ -17,7 +17,7 @@ const ClassDetails = () => {
     return (
         <div className="min-h-[59vh] md:pt-20 pt-12">
             <Helmet>
-                <title>{title} | QuillAcademy - Gateway to Learning</title>
+                <title> | QuillAcademy - Gateway to Learning</title>
             </Helmet>
             <Container>
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-6 md:mb-20 mb-12">

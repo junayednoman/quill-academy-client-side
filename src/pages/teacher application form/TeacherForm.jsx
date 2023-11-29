@@ -27,16 +27,6 @@ const TeacherForm = () => {
                     toast.success('Your request has been successfully submitted')
                 }
             })
-
-
-
-        // axiosPublic.post('/teacher', teacherData)
-        //     .then(res => {
-        //         console.log(res.data);
-        //         if (res.data.insertedId) {
-        //             toast.success('Your request submitted successfully')
-        //         }
-        //     })
     }
 
 

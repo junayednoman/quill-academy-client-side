@@ -73,7 +73,7 @@ const CheckOutForm = ({ classInfo }) => {
             const res = await axiosSecure.post('/payments', paymentInfo)
             console.log(res.data);
             if (res.data.insertedId ) {
-                navigate('/dashboard/my-classes')
+                navigate('/dashboard/my-enrolled-classes')
             }
 
 

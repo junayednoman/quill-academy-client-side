@@ -10,7 +10,6 @@ import 'swiper/css/pagination';
 import { FreeMode, Pagination } from 'swiper/modules';
 
 const ClassesByCategory = ({ category, classes }) => {
-
     return (
         <div className="lg:pb-6 md:pb-5 pb-8">
             <Container>

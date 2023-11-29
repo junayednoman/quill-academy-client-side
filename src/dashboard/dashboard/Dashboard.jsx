@@ -50,6 +50,7 @@ const Dashboard = () => {
                     role === 'teacher' &&
                     <div>
                         <ul className="text-white space-y-3 menu">
+                            <li><NavLink to='/dashboard/add-class' className='flex gap-1 items-center font-medium'><MdOutlineOndemandVideo />Add Class</NavLink></li>
                             <li><NavLink to='/dashboard/my-classes' className='flex gap-1 items-center font-medium'><MdOutlineOndemandVideo />My Classes</NavLink></li>
                             <li><NavLink to='/dashboard/profile' className='flex gap-1 items-center font-medium'><FaRegUser />My Profile</NavLink></li>
                         </ul>

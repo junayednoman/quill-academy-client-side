@@ -9,15 +9,6 @@ const MyEnrolledClasses = () => {
     const { user, loading } = useAuth();
     const axiosSecure = useAxiosSecure();
 
-    // const { data: ids = [] } = useQuery({
-    //     queryKey: 'classIds',
-    //     queryFn: async () => {
-    //         const res = await axiosSecure.get(`/payments/ids/junayednoman05@gmail.com`);
-    //         return res.data;
-    //     }
-    // })
-    // console.log('ids,', ids);
-
     const { data: enrolledClasses, isPending } = useQuery({
 
         queryKey: 'dash-user',
@@ -30,7 +21,6 @@ const MyEnrolledClasses = () => {
             return res.data;
         }
     })
-    console.log('enrolledClasses', enrolledClasses);
     if (isPending) {
         return <div className="h-[80vh] flex justify-center items-center"><span className="loading loading-spinner loading-lg"></span></div>
     }
@@ -38,7 +28,7 @@ const MyEnrolledClasses = () => {
     return (
         <div className="md:py-20 py-10">
             <Helmet>
-                <title>Enrolled Classes | Dashboard | QuillAcademy - Gateway to Learning</title>
+                <title>Enrolled Classes | QuillAcademy - Gateway to Learning</title>
             </Helmet>
             <Container>
                 <SectionTitle heading={'My Enrolled Classes'}></SectionTitle>

@@ -4,8 +4,9 @@ import { FaUserFriends } from "react-icons/fa";
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 const ClassCard = ({ classItem }) => {
-    const { title, image, price, short_description, enrolled_students, teacher_name, _id } = classItem;
 
+    const { title, image, price, short_description, enrolled_students, teacher_name, _id } = classItem;
+    
     return (
         <div>
             <div className="card w-full bg-base-100 shadow-md rounded-md">
@@ -19,10 +20,10 @@ const ClassCard = ({ classItem }) => {
                             <BsCurrencyDollar></BsCurrencyDollar>
                             <p>{price}</p>
                         </div>
-                        <div data-tip="Enrolled Students" className="flex tooltip tooltip-bottom gap-1 justify-between items-center">
+                        {enrolled_students && <div data-tip="Enrolled Students" className="flex tooltip tooltip-bottom gap-1 justify-between items-center">
                             <FaUserFriends />
                             <p>{enrolled_students}</p>
-                        </div>
+                        </div>}
                     </div>
                     <div className="card-actions w-full">
                         <Link to={`/class/${_id}`}>
