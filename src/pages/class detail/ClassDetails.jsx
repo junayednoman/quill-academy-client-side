@@ -1,23 +1,57 @@
 import { Helmet } from "react-helmet-async";
 import Container from "../../components/container/Container";
-import { Link, Navigate, useLoaderData, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import Btn from "../../components/button/Btn";
 import Feedback from "../home/feedback/Feedback";
 import Cta from "../../components/cta/Cta";
+import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../custom hooks/axios secure/useAxiosSecure";
+import useAuth from "../../custom hooks/axios public/use auth/useAuth";
 
 
 const ClassDetails = () => {
     const navigate = useNavigate();
     const classItem = useLoaderData();
+    const location = useLocation();
+    const axiosSecure = useAxiosSecure();
+    const { user } = useAuth();
+
+    const { data: paidClassIds, isPending, refetch } = useQuery({
+        queryKey: ['payment-class-id'],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/payments/${user?.email}`)
+            return res.data.map(classId => classId)
+        }
+    })
+
+    const isMatched = paidClassIds?.filter(paidClassId => paidClassId.classId === classItem._id);
+    console.log(isMatched);
+    if (isPending) {
+        return;
+    } else if (isMatched?.length > 0) {
+        <Navigate state={'rejected'} to={`/class/${classItem._id}`}></Navigate>
+    } else {
+        // console.log('not matched');
+    }
+
     const { title, image, short_description, teacher_name, price, enrolled_students, category } = classItem;
 
     const handleNavigate = () => {
-        navigate('/payment', { state: {classInfo: classItem} })
+        if (isMatched?.length > 0) {
+            Swal.fire({
+                text: '',
+                html: "You have already enrolled in this class. click here to <a target='_blank' className='underline font-semibold text-[#3870C1]' href='/dashboard/my-enrolled-classes'>view classes</a>",
+                icon: "error"
+            });
+            return;
+        }
+        navigate('/payment', { state: { classInfo: classItem } })
     }
     return (
         <div className="min-h-[59vh] md:pt-20 pt-12">
             <Helmet>
-                <title> | QuillAcademy - Gateway to Learning</title>
+                <title>{title && title} | QuillAcademy - Gateway to Learning</title>
             </Helmet>
             <Container>
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-6 md:mb-20 mb-12">

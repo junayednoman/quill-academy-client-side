@@ -5,17 +5,13 @@ import useAuth from "../../custom hooks/axios public/use auth/useAuth";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import useUserRole from "../../custom hooks/user role/useUserRole";
-
 
 const Header = () => {
     const { user, loading, logOut } = useAuth();
     const [showDrop, setShowDrop] = useState(false);
-    const { role, isPending } = useUserRole();
     const handleDropdown = () => {
         setShowDrop(!showDrop)
     }
-
 
     const menu = <>
         <li className="text-[15px]"><Link className=" duration-500" to='/'>Home</Link></li>

@@ -20,7 +20,7 @@ const ClassCard = ({ classItem }) => {
                             <BsCurrencyDollar></BsCurrencyDollar>
                             <p>{price}</p>
                         </div>
-                        {enrolled_students && <div data-tip="Enrolled Students" className="flex tooltip tooltip-bottom gap-1 justify-between items-center">
+                        {enrolled_students !== 0 && <div data-tip="Enrolled Students" className="flex tooltip tooltip-bottom gap-1 justify-between items-center">
                             <FaUserFriends />
                             <p>{enrolled_students}</p>
                         </div>}

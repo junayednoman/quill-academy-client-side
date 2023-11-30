@@ -4,16 +4,18 @@ import SectionTitle from "../../components/section title/SectionTitle";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckOutForm from "./checkout form/CheckOutForm";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK)
 const Payment = () => {
     const location = useLocation();
-    if (!location.state) {
-        return <Navigate to='/'></Navigate>
-    }
 
+    if (!location.state) {
+        return <Navigate to='/classes'></Navigate>
+    }
     const classInfo = location.state?.classInfo;
+
+
     return (
         <div className="min-h-[59vh] md:pt-20 pt-12">
             <Helmet>
@@ -22,7 +24,7 @@ const Payment = () => {
 
             <Container>
                 <SectionTitle heading={'Payment and Enroll'}></SectionTitle>
-                <h4 className="mb-4 text-2xl">Amount: ${classInfo.price}</h4>
+                <h4 className="mb-4 text-2xl">Amount: ${classInfo?.price}</h4>
 
                 <Elements stripe={stripePromise}>
                     <CheckOutForm classInfo={classInfo}></CheckOutForm>

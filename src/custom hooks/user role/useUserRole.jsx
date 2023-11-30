@@ -1,7 +1,5 @@
 import useAxiosSecure from '../axios secure/useAxiosSecure';
 import useAuth from '../axios public/use auth/useAuth';
-import Lottie from 'lottie-react';
-import handAnimation from '../../../public/hand.json'
 import { useQuery } from '@tanstack/react-query';
 
 const useUserRole = () => {
@@ -11,7 +9,7 @@ const useUserRole = () => {
 
 
     const { data: result, isPending } = useQuery({
-        queryKey: 'userRole',
+        queryKey: ['userRole'],
         queryFn: async () => {
             if (loading) {
                 return;

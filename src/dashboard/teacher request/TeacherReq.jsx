@@ -3,23 +3,58 @@ import Container from "../../components/container/Container";
 import SectionTitle from "../../components/section title/SectionTitle";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../custom hooks/axios secure/useAxiosSecure";
-import Lottie from "lottie-react";
-import handAnimation from '../../../public/hand.json'
+import { ToastContainer, toast } from "react-toastify";
 
 const TeacherReq = () => {
     const axiosSecure = useAxiosSecure();
-
     const { data: requests, isPending, refetch } = useQuery({
-        queryKey: 'teacher-requests',
+        queryKey: ['teacher-requests'],
         queryFn: async () => {
             const res = await axiosSecure.get('/teacher-requests');
             return res.data;
         }
     })
-    
 
     if (isPending) {
         return <div className="h-[80vh] flex justify-center items-center"><span className="loading loading-spinner loading-lg"></span></div>
+    }
+
+    const handleApprove = (email) => {
+        const updates = { status: 'approved' }
+        axiosSecure.patch(`/teacher-request-status/${email}`, updates)
+            .then(res => {
+                console.log(res.data);
+                if (res.data.modifiedCount === 1) {
+                    toast.success('The teacher has been approved')
+                    const updates = { role: 'teacher' }
+                    axiosSecure.patch(`/users/${email}`, updates)
+                        .then(res => {
+                            console.log(res.data);
+                        })
+                    refetch();
+                } else if (res.data.modifiedCount === 0) {
+                    toast.warning('This user is approved as a teacher')
+                }
+            })
+    }
+
+    const handleReject = (email) => {
+        const updates = { status: 'rejected' }
+        axiosSecure.patch(`/teacher-request-status/${email}`, updates)
+            .then(res => {
+                console.log(res.data);
+                if (res.data.modifiedCount === 1) {
+                    toast.success('The teacher has been rejected')
+                    const updates = { role: 'user' }
+                    axiosSecure.patch(`/users/${email}`, updates)
+                        .then(res => {
+                            console.log(res.data);
+                        })
+                    refetch();
+                } else if (res.data.modifiedCount === 0) {
+                    toast.warning('This user is rejected already')
+                }
+            })
     }
 
     return (
@@ -71,8 +106,8 @@ const TeacherReq = () => {
                                         <td>{request.status}</td>
                                         <td>
                                             <div className="text-center flex items-center flex-col space-y-2">
-                                                <button className="text-[#3871C1] underline block rounded-sm ">Approve</button>
-                                                <button className="text-[#3871C1] underline block rounded-sm ">Reject</button>
+                                                <button onClick={() => handleApprove(request.email)} className="text-[#3871C1] underline block rounded-sm ">Approve</button>
+                                                <button onClick={() => handleReject(request.email)} className="text-[#3871C1] underline block rounded-sm ">Reject</button>
                                             </div>
                                         </td>
                                     </tr>)
@@ -80,6 +115,7 @@ const TeacherReq = () => {
                         </tbody>
                     </table>
                 </div>
+                <ToastContainer></ToastContainer>
             </Container>
         </div>
     );

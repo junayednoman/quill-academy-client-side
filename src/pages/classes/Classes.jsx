@@ -7,23 +7,30 @@ import useAxiosPublic from "../../custom hooks/axios public/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import Lottie from "lottie-react";
 import handAnimation from '../../../public/hand.json'
+import { useState } from "react";
 
 const Classes = () => {
     const axiosPublic = useAxiosPublic();
     const { data: classes, isPending } = useQuery({
-        queryKey: 'all-classes',
+        queryKey: ['all-classes'],
         queryFn: async () => {
             const res = await axiosPublic.get('/all-classes');
             return res.data;
         }
     })
+    if (isPending) {
+        return;
+    }
+    const matchedItems = classes.filter(classItem => classItem.status === "approved");
+
     // console.log(classes);
     // console.log(classes);
-    const webClasses = classes?.filter(item => item.category === 'web-development');
-    const graphicsClasses = classes?.filter(item => item.category === 'graphics');
-    const securityClasses = classes?.filter(item => item.category === 'cyber-security');
-    const appClasses = classes?.filter(item => item.category === 'app-development');
-    const digitalMarketingClasses = classes?.filter(item => item.category === 'digital-marketing');
+    const webClasses = matchedItems?.filter(item => item.category === 'web-development');
+    const graphicsClasses = matchedItems?.filter(item => item.category === 'graphics');
+    const securityClasses = matchedItems?.filter(item => item.category === 'cyber-security');
+    const appClasses = matchedItems?.filter(item => item.category === 'app-development');
+    const digitalMarketingClasses = matchedItems?.filter(item => item.category === 'digital-marketing');
+
     return (
         <div className="min-h-[59vh]">
             <Helmet>

@@ -11,7 +11,7 @@ const Btn = ({ text, fullWidth }) => {
 
 Btn.propTypes = {
     text: PropTypes.string,
-    width: PropTypes.string,
+    fullWidth: PropTypes.string,
 }
 
 export default Btn;

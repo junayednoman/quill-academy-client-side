@@ -9,7 +9,7 @@ const Profile = () => {
     const axiosSecure = useAxiosSecure();
     const { user, loading } = useAuth();
     const { data: userData, isPending } = useQuery({
-        queryKey: 'useData',
+        queryKey: ['useData'],
         queryFn: async () => {
             if (loading) {
                 return;
@@ -33,7 +33,7 @@ const Profile = () => {
                 <SectionTitle heading={'My Profile'} />
 
                 <div className='md:w-[600px] rounded-md relative shadow-md bg-[#3871C1] py-12 mx-auto text-center text-white mt-[150px]'>
-                    <img className='w-[120px] h-[120px] absolute -top-[25%] left-[calc(60%-120px)] border-2 rounded-full border-[#3871C1] mx-auto' src={userData?.image} alt="" />
+                    <img className='w-[120px] bg-white h-[120px] absolute -top-[25%] left-[calc(60%-120px)] border-2 rounded-full border-[#3871C1] mx-auto' src={userData?.image} alt="" />
                     <h4 className='md:text-3xl text-2xl mb-4 mt-6'>{userData?.name}</h4>
                     <p className='capitalize mb-1'><span className='font-semibold'>Role: </span>{userData?.role}</p>
                     <p className='capitalize mb-1'><span className='font-semibold'>Phone: </span>{userData.phone? userData?.phone : 'XXXXXXXXX'}</p>

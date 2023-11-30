@@ -1,4 +1,3 @@
-import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import SectionTitle from '../../components/section title/SectionTitle';
 import { useQuery } from '@tanstack/react-query';
@@ -13,7 +12,7 @@ const MyClasses = () => {
     const { user, loading } = useAuth();
     const axiosSecure = useAxiosSecure();
     const { data: classes = [], refetch } = useQuery({
-        queryKey: "my-added-classes",
+        queryKey: ["my-added-classes"],
         queryFn: async () => {
             const res = await axiosSecure.get(`/my-classes/${user?.email}`)
             return res.data;
@@ -94,7 +93,7 @@ const MyClasses = () => {
                                             <div className="text-center flex items-center flex-col space-y-2">
                                                 <Link to={`/dashboard/update-class/${classItem._id}`} className="text-[#3871C1] underline block rounded-sm ">Update</Link>
                                                 <button onClick={() => handleDeleteClass(classItem._id)} className="text-red-600 underline block rounded-sm ">Delete</button>
-                                                <button className="text-[#3871C1] underline block rounded-sm ">Details</button>
+                                                <Link to={`/dashboard/my-class/${classItem._id}`} className="text-[#3871C1] underline block rounded-sm ">Details</Link>
                                             </div>
                                         </td>
                                     </tr>)

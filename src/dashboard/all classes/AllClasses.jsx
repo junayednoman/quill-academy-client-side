@@ -3,17 +3,49 @@ import Container from '../../components/container/Container';
 import useAxiosPublic from '../../custom hooks/axios public/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
 import SectionTitle from '../../components/section title/SectionTitle';
+import useAxiosSecure from '../../custom hooks/axios secure/useAxiosSecure';
+import { ToastContainer, toast } from 'react-toastify';
 
 const AllClasses = () => {
     const axiosPublic = useAxiosPublic();
-    const { data: classes = [], isPending } = useQuery({
-        queryKey: 'all-classes-dashboard',
+    const axiosSecure = useAxiosSecure();
+    const { data: classes = [], isPending, refetch } = useQuery({
+        queryKey: ['all-classes-dashboard'],
         queryFn: async () => {
             const res = await axiosPublic.get('/all-classes')
             return res.data
         }
     })
-    console.log(classes);
+
+    const handleApproved = (id) => {
+        const updates = { status: 'approved' }
+        axiosSecure.patch(`/class-status/${id}`, updates)
+            .then(res => {
+                console.log(res.data);
+                if (res.data.modifiedCount === 1) {
+                    toast.success('The class has been approved')
+
+                    refetch();
+                } else if (res.data.modifiedCount === 0) {
+                    toast.warning('This class is already approved')
+                }
+            })
+    }
+
+    const handleRejected = (id) => {
+        const updates = { status: 'rejected' }
+        axiosSecure.patch(`/class-status/${id}`, updates)
+            .then(res => {
+                console.log(res.data);
+                if (res.data.modifiedCount === 1) {
+                    toast.success('The class has been rejected');
+                    refetch();
+                } else if (res.data.modifiedCount === 0) {
+                    toast.warning('This class is already rejected')
+                }
+            })
+    }
+
     return (
         <div className='md:py-20 py-10'>
             <Helmet>
@@ -58,9 +90,9 @@ const AllClasses = () => {
                                         <td>{classItem.short_description}</td>
                                         <td>
                                             <div className="text-center flex items-center flex-col space-y-2">
-                                                <button className="text-[#3871C1] underline block rounded-sm ">Approve</button>
-                                                <button className="text-[#3871C1] underline block rounded-sm ">Reject</button>
-                                                
+                                                <button onClick={() => handleApproved(classItem._id)} className="text-[#3871C1] underline block rounded-sm ">Approve</button>
+                                                <button onClick={() => handleRejected(classItem._id)} className="text-[#3871C1] underline block rounded-sm ">Reject</button>
+
                                             </div>
                                         </td>
                                         <td><button className="text-[#3871C1] underline block rounded-sm ">See Progress</button></td>
@@ -69,6 +101,8 @@ const AllClasses = () => {
                         </tbody>
                     </table>
                 </div>
+
+                <ToastContainer></ToastContainer>
             </Container>
         </div>
     );

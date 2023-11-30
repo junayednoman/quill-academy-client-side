@@ -26,11 +26,11 @@ const AddClass = () => {
             teacher_name: name,
             teacher_email: email,
             price: data.price,
-            enrolled_students: (Math.floor(Math.random() * (300 - 20 + 1)) + 20),
+            enrolled_students: 0,
             short_description: data.description,
             image: data.image,
             category: data.category,
-            status: 'pending'
+            status: 'pending',
         }
         axiosPublic.post('/classes', classData)
             .then(res => {

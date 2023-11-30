@@ -14,7 +14,7 @@ const Recommended = () => {
     const axiosPublic = useAxiosPublic();
 
     const { data: classes = [] } = useQuery({
-        queryKey: 'recommended-classes',
+        queryKey: ['recommended-classes'],
         queryFn: async () => {
             const res = await axiosPublic.get('/recommended-classes');
             return res.data;

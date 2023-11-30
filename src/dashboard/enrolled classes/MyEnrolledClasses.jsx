@@ -4,25 +4,30 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../custom hooks/axios secure/useAxiosSecure";
 import SectionTitle from "../../components/section title/SectionTitle";
 import Container from "../../components/container/Container";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const MyEnrolledClasses = () => {
     const { user, loading } = useAuth();
     const axiosSecure = useAxiosSecure();
+    const navigate = useNavigate()
 
     const { data: enrolledClasses, isPending } = useQuery({
 
-        queryKey: 'dash-user',
-
+        queryKey: ['dash-user'],
         queryFn: async () => {
             if (loading) {
                 return;
             }
-            const res = await axiosSecure.get(`/classes/enrolled/${user?.email}`)
+            const res = await axiosSecure.get(`/student/enrolled-class/${user?.email}`)
             return res.data;
         }
     })
     if (isPending) {
         return <div className="h-[80vh] flex justify-center items-center"><span className="loading loading-spinner loading-lg"></span></div>
+    }
+
+    const handleSendClassDetails = (id, title) => {
+        navigate(`/dashboard/myenroll-class/${id}`, {state: {title: title}})
     }
 
     return (
@@ -47,7 +52,7 @@ const MyEnrolledClasses = () => {
                         </thead>
                         <tbody>
                             {
-                                enrolledClasses.map((classInfo, idx) =>
+                                enrolledClasses?.map((classInfo, idx) =>
                                     <tr key={classInfo._id}>
                                         <th>
                                             {idx + 1}
@@ -65,7 +70,7 @@ const MyEnrolledClasses = () => {
                                         <td>{classInfo.teacher_name}</td>
                                         <td>
                                             <div className="space-y-2">
-                                                <button className="text-[#3871C1] underline block rounded-sm ">Continue</button>
+                                                <button onClick={() => handleSendClassDetails(classInfo._id, classInfo.title)} className="text-[#3871C1] underline block rounded-sm ">Continue</button>
                                             </div>
                                         </td>
                                     </tr>)

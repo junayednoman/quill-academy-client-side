@@ -1,18 +1,17 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { useEffect, useState } from 'react';
-import Btn from '../../../components/button/Btn';
 import { toast } from 'react-toastify';
-import useAxiosPublic from '../../../custom hooks/axios public/useAxiosPublic';
 import useAuth from '../../../custom hooks/axios public/use auth/useAuth';
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom';
+import useAxiosSecure from '../../../custom hooks/axios secure/useAxiosSecure';
 
-const CheckOutForm = ({ classInfo }) => {
+const CheckOutForm = ({ classInfo,}) => {
     const { user } = useAuth();
     const stripe = useStripe();
     const elements = useElements();
     const [clientSecret, setClientSecret] = useState('');
-    const axiosSecure = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -21,6 +20,9 @@ const CheckOutForm = ({ classInfo }) => {
                 setClientSecret(res.data.paymentSecret);
             })
     }, [axiosSecure, classInfo])
+
+   
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -56,7 +58,6 @@ const CheckOutForm = ({ classInfo }) => {
 
         if (paymentIntent?.status === 'succeeded') {
             toast.success('Payment Succeed!')
-
             const paymentInfo = {
                 email: user.email,
                 amount: classInfo.price,
@@ -69,16 +70,19 @@ const CheckOutForm = ({ classInfo }) => {
             // const updateRole = {role: 'student'}
             const roleUpdate = await axiosSecure.patch(`/users/${user.email}`, { role: 'student' });
 
-            // post payment data todb
+            // post payment data to db
             const res = await axiosSecure.post('/payments', paymentInfo)
-            console.log(res.data);
-            if (res.data.insertedId ) {
+            console.log('from post payments', res.data);
+            if (res.data.insertedId) {
+                const total_enrolled_students = classInfo?.enrolled_students + 1;
+
+                axiosSecure.patch(`/classes/enrolled-count/${classInfo._id}`, { enrolled_students: total_enrolled_students })
+                    .then(res => {
+                        console.log('from enroll count', res.data);
+                    })
                 navigate('/dashboard/my-enrolled-classes')
             }
-
-
         }
-
     }
     return (
         <div>
@@ -100,8 +104,8 @@ const CheckOutForm = ({ classInfo }) => {
                         },
                     }}
                 />
-                <button type="submit" className='mt-5' disabled={!stripe || !clientSecret}>
-                    <Btn text='Pay Now'></Btn>
+                <button type="submit" className='mt-5 py-3 px-6 text-white rounded-[4px] bg-[#3673BE] hover:bg-[#265185] duration-500' disabled={!stripe || !clientSecret}>
+                    Pay Now
                 </button>
 
             </form>
@@ -110,7 +114,7 @@ const CheckOutForm = ({ classInfo }) => {
 };
 
 CheckOutForm.propTypes = {
-    classInfo: PropTypes.object
+    classInfo: PropTypes.object,
 }
 
 export default CheckOutForm;
