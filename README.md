@@ -17,4 +17,4 @@
 
 
 ### 🌐 Website preview link:
-quill-academy.web.app
+https://quill-academy.web.app/
