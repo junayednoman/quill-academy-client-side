@@ -8,11 +8,18 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import useAxiosPublic from "../../custom hooks/axios public/useAxiosPublic";
 import useRequestStatus from "../../custom hooks/teacher request status/useRequestStatus";
+import useUserRole from "../../custom hooks/user role/useUserRole";
+import { useNavigate } from "react-router-dom";
 const TeacherForm = () => {
     const axiosPublic = useAxiosPublic();
     const [requestStatus, statusPending] = useRequestStatus();
     const { user } = useAuth();
     const { register, handleSubmit } = useForm();
+    const { role } = useUserRole();
+    const navigate = useNavigate();
+    if (role === "admin") {
+        return navigate('/');
+    }
     const handleFormSubmit = data => {
         const teacherData = {
             name: data.name,

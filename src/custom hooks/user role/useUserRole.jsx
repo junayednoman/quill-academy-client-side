@@ -4,9 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 
 const useUserRole = () => {
     const axiosSecure = useAxiosSecure();
-    // const [userRole, setUserRole] = useState('');
     const { user, loading } = useAuth();
-
 
     const { data: result, isPending } = useQuery({
         queryKey: ['userRole'],
@@ -19,7 +17,6 @@ const useUserRole = () => {
             // console.log(res.data)
         }
     })
-
     const role = result?.role;
     return { role, isPending }
 };

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Btn from "../button/Btn";
 
 const Cta = () => {
@@ -9,7 +10,9 @@ const Cta = () => {
                     <p>Seize the opportunity to transform your learning experience. Click below to explore, discover, and embark on a journey of endless possibilities with QuillAcademy. </p>
                 </div>
                 <div className="text-center md:text-right">
-                    <Btn text='Start Learning Now!'></Btn>
+                    <Link to={'/classes'}>
+                        <Btn text='Start Learning Now!'></Btn>
+                    </Link>
                 </div>
             </div>
         </div>

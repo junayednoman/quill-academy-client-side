@@ -32,11 +32,13 @@ import TeacherParent from './private parent/teacher parent/TeacherParent';
 import UpdateClass from './dashboard/update class/UpdateClass';
 import MyClassDetails from './dashboard/my class details/MyClassDetails';
 import EnrolledClassDetails from './dashboard/my enrolled class details/EnrolledClassDetails';
+import ErrorPage from './pages/error page/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
@@ -57,12 +59,12 @@ const router = createBrowserRouter([
       {
         path: '/class/:id',
         element: <PrivateParent><ClassDetails></ClassDetails></PrivateParent>,
-        loader: ({ params }) => fetch(`http://localhost:5000/classes/${params.id}`)
+        loader: ({ params }) => fetch(`https://quill-academy-server.vercel.app/classes/${params.id}`)
       },
       {
         path: '/categories/:category',
         element: <CategoryWiseClasses></CategoryWiseClasses>,
-        loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.category}`)
+        loader: ({ params }) => fetch(`https://quill-academy-server.vercel.app/categories/${params.category}`)
       },
       {
         path: '/tech-on-quillAcademy',
@@ -78,6 +80,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <PrivateParent><Dashboard /></PrivateParent>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/dashboard',
@@ -126,7 +129,7 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/update-class/:id',
         element: <TeacherParent><UpdateClass></UpdateClass></TeacherParent>,
-        loader: ({ params }) => fetch(`http://localhost:5000/classes/${params.id}`)
+        loader: ({ params }) => fetch(`https://quill-academy-server.vercel.app/classes/${params.id}`)
       },
       {
         path: '/dashboard/my-class/:id',
