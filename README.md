@@ -1,8 +1,20 @@
-# React + Vite
+# ShareABite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 💥Key features:
+    1️⃣ Accessible from all devices and browsers.
 
-Currently, two official plugins are available:
+    2️⃣ Private pages(only logged in user can browse these pages)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+    3️⃣ Search and sort functionality implemented
+    
+    4️⃣ Sign up and sign in system with email and password. Google login integrated
+
+    5️⃣ Secured specific APIs with JWT
+
+    7️⃣ Featured food items displayed on the home page 
+
+
+
+
+### 🌐 Website preview link:
+quill-academy.web.app
