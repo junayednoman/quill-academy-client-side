@@ -1,7 +1,5 @@
 # 🎓 QuillAcademy
 
-## 🚀 Project Overview
-
 This dynamic web application boasts a user-centric experience with a suite of key features designed to elevate accessibility and security. Users can seamlessly access the platform from any device or browser, ensuring a consistent and versatile experience.
 
 ## 🔒 Private Pages & Authentication
