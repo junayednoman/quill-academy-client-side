@@ -1,4 +1,4 @@
-# ShareABite
+# 🎓 QuillAcademy
 
 ## 🚀 Project Overview
 
@@ -20,7 +20,8 @@ The project implements a secure infrastructure by employing JSON Web Tokens (JWT
 
 Tailor the experience for different user roles with distinct dashboards for students, teachers, and administrators. Each user role enjoys a personalized interface with specific authorizations, optimizing functionality and relevance.
 
-
+## Used technologies
+[![GitHub Streak](https://i.postimg.cc/0jqgptLG/Untitled-design-2.png)](#)
 
 ### 🌐 Website preview link:
 https://quill-academy.web.app/
