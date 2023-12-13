@@ -1,16 +1,14 @@
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from '../../assets/logo.png'
 import Btn from "../button/Btn";
 import useAuth from "../../custom hooks/axios public/use auth/useAuth";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import useUserRole from "../../custom hooks/user role/useUserRole";
 
 const Header = () => {
     const { user, loading, logOut } = useAuth();
-    const [showDrop, setShowDrop] = useState(false);
-    const { role } = useUserRole();
+    const [showDrop, setShowDrop] = useState(false)
     const handleDropdown = () => {
         setShowDrop(!showDrop)
     }
@@ -56,7 +54,7 @@ const Header = () => {
                     {loading ? <Btn text='Loading...'></Btn> : user ? <div className="rounded-md relative inline-block">
                         <img onClick={handleDropdown} className="w-[55px] h-[55px] z-10 border cursor-pointer rounded-md" src={user?.photoURL} alt="" />
 
-                        <ul className={`dropdown-content absolute z-0 duration-300 right-0  myDropdown menu p-2 shadow bg-base-100 rounded-box w-52 ${showDrop ? 'opacity-1 top-[100%]' : 'hidden opacity-0 -z-10 top-[115%]'}`}>
+                        <ul className={`dropdown-content absolute z-0 duration-300 right-0  myDropdown menu p-2 shadow bg-base-100 rounded-box w-52 ${showDrop ? 'opacity-1 top-[100%]' : 'pointer-events-none opacity-0 -z-10 top-[115%]'}`}>
                             <li className="userName">{user.displayName}</li>
                             <li><Link to={'/dashboard/profile'}>Dashboard</Link></li>
                             <li onClick={HandleLogOut}><a>Log Out</a></li>
