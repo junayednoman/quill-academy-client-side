@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import Container from "../../components/container/Container";
-import { Link, Navigate, useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLoaderData, useNavigate } from "react-router-dom";
 import Btn from "../../components/button/Btn";
 import Feedback from "../home/feedback/Feedback";
 import Cta from "../../components/cta/Cta";
@@ -9,15 +9,35 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../custom hooks/axios secure/useAxiosSecure";
 import useAuth from "../../custom hooks/axios public/use auth/useAuth";
 
+// social share
+import {
+    FacebookShareButton,
+    TwitterShareButton,
+    TelegramShareButton,
+    WhatsappShareButton,
+} from 'react-share';
+import faceBookImg from '../../assets/facebook.png'
+import twitterImg from '../../assets/twitter.png'
+import whatsappImg from '../../assets/whatsapp.png'
+import telegramImg from '../../assets/telegram.png'
+import { useEffect, useState } from "react";
 
 const ClassDetails = () => {
+    // social share
+    const [pageUrl, setPageUrl] = useState('')
+    useEffect(() => {
+        const currentURL = window.location.href;
+        setPageUrl(currentURL)
+    }, []);
+
+
+    const shareDescription = `😊`;
     const navigate = useNavigate();
     const classItem = useLoaderData();
-    const location = useLocation();
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
 
-    const { data: paidClassIds, isPending, refetch } = useQuery({
+    const { data: paidClassIds, isPending } = useQuery({
         queryKey: ['payment-class-id'],
         queryFn: async () => {
             const res = await axiosSecure.get(`/payments/${user?.email}`)
@@ -36,6 +56,8 @@ const ClassDetails = () => {
     }
 
     const { title, image, short_description, teacher_name, price, enrolled_students, category } = classItem;
+    // social share title
+    const shareTitle = `🚀 Unlock Your Potential: Dive into the World of ${title}! 📚`;
 
     const handleNavigate = () => {
         if (isMatched?.length > 0) {
@@ -62,6 +84,21 @@ const ClassDetails = () => {
                             <p><span className="font-semibold">Teacher: </span> {teacher_name}</p>
                             <p><span className="font-semibold">Enrolled Students: </span> {enrolled_students}</p>
                             <p className="font-semibold"><span className="font-semibold">Category: </span> <Link to={`/categories/${category}`} className="underline">{category}</Link></p>
+                        </div>
+                        <div className='space-x-3'>
+                            <div className="my-3 font-semibold">Share On:</div>
+                            <FacebookShareButton url={pageUrl} quote={shareTitle}>
+                                <img className='w-[40px]' src={faceBookImg} alt="" />
+                            </FacebookShareButton>
+                            <TwitterShareButton url={pageUrl} hashtags={['DiveIntoKnowledge', 'Course']} title={shareTitle + shareDescription}>
+                                <img className='w-[40px]' src={twitterImg} alt="" />
+                            </TwitterShareButton>
+                            <TelegramShareButton>
+                                <img className='w-[40px]' src={telegramImg} alt="" />
+                            </TelegramShareButton>
+                            <WhatsappShareButton url={pageUrl} title={shareTitle + shareDescription}>
+                                <img className='w-[40px]' src={whatsappImg} alt="" />
+                            </WhatsappShareButton>
                         </div>
                     </div>
                     <div className="col-span-2 border rounded-md">

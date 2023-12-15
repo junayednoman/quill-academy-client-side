@@ -7,7 +7,8 @@ import useAxiosPublic from "../../custom hooks/axios public/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import Lottie from "lottie-react";
 import handAnimation from '../../../public/hand.json'
-import { useState } from "react";
+import { FaHome } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Classes = () => {
     const axiosPublic = useAxiosPublic();
@@ -18,10 +19,10 @@ const Classes = () => {
             return res.data;
         }
     })
-    if (isPending) {
-        return;
-    }
-    const matchedItems = classes.filter(classItem => classItem.status === "approved");
+    // if (isPending) {
+    //     return;
+    // }
+    const matchedItems = classes?.filter(classItem => classItem.status === "approved");
 
     // console.log(classes);
     // console.log(classes);
@@ -38,6 +39,12 @@ const Classes = () => {
             </Helmet>
             <div className="md:py-20 py-12 bg-[#3871C1]">
                 <h2 className="text-center text-white text-[38px] md:text-[52px] md:leading-[80px] leading-[55px]">All Classes at a Glance</h2>
+                <div className="breadcrumbs">
+                <ul className="text-white justify-center">
+                    <li><Link to='/'><FaHome className="mr-1"></FaHome> Home</Link></li>
+                    <li><p> Classes</p></li>                    
+                </ul>
+            </div>
             </div>
 
             {

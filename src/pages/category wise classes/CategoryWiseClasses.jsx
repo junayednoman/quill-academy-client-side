@@ -4,16 +4,22 @@ import ClassesByCategory from "../../components/classa by category/ClassesByCate
 import Recommended from "../home/recommended/Recommended";
 import Cta from "../../components/cta/Cta";
 import Container from "../../components/container/Container";
+import BreadCrumbs from "../../components/breadcrumbs/BreadCrumbs";
+
 
 const CategoryWiseClasses = () => {
     const category = useParams();
     const classes = useLoaderData();
+
     return (
-        <div className="md:pt-20 pt-10 min-h-[59vh]">
+        <div className="md:pb-20 pt-b0 min-h-[59vh]">
             <Helmet>
-                <title>{category.category} | QuillAcademy - Gateway to Learning</title>
+                <title>{category?.category} | QuillAcademy - Gateway to Learning</title>
             </Helmet>
-            <ClassesByCategory category={category.category} classes={classes} ></ClassesByCategory>
+            <div className="md:mb-14 mb-8">
+                <BreadCrumbs category={category?.category}></BreadCrumbs>
+            </div>
+            <ClassesByCategory category={category?.category} classes={classes} ></ClassesByCategory>
 
             <Recommended></Recommended>
             <Container>

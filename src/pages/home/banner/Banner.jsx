@@ -10,7 +10,7 @@ const Banner = () => {
                 <div className='grid items-center md:grid-cols-2 grid-cols-1'>
                     <div className=" md:text-left text-center pr-0 md:col-span-2 lg:col-span-1">
                         <p className="py-1 mb-2 px-3 font-medium bg-[#3871c11d] inline-block rounded-sm">Quill Academy</p>
-                        <h1 className="md:text-7xl text-[43px] md:leading-[80px] leading-[55px]"> Where Learning Knows No Limits!</h1>
+                        <h1 className="md:text-7xl text-[43px] md:leading-[80px] leading-[55px] dark:text-white"> Where Learning Knows No Limits!</h1>
                         <p className="md:my-6 my-3">Welcome to QuillAcademy, where knowledge meets innovation! Immerse yourself in a world of limitless learning possibilities. Our platform is designed to ignite curiosity, foster creativity, and empower you to reach new heights of understanding.</p>
                         <div className='md:mt-0 mt-5'>
                             <Link to={'/sign-up'}>
@@ -20,7 +20,6 @@ const Banner = () => {
                     </div>
                     <div className="lg:block hidden">
                         <img className="ml-auto w-[350px]" src={bannerImg} alt="" />
-                        {/* <Lottie animationData={learnAnimation}></Lottie> */}
                     </div>
                 </div>
             </Container>
