@@ -21,6 +21,8 @@ import twitterImg from '../../assets/twitter.png'
 import whatsappImg from '../../assets/whatsapp.png'
 import telegramImg from '../../assets/telegram.png'
 import { useEffect, useState } from "react";
+import BreadCrumbs from "../../components/breadcrumbs/BreadCrumbs";
+import { FaHome } from "react-icons/fa";
 
 const ClassDetails = () => {
     // social share
@@ -57,6 +59,7 @@ const ClassDetails = () => {
 
     const { title, image, short_description, teacher_name, price, enrolled_students, category } = classItem;
     // social share title
+
     const shareTitle = `🚀 Unlock Your Potential: Dive into the World of ${title}! 📚`;
 
     const handleNavigate = () => {
@@ -71,13 +74,24 @@ const ClassDetails = () => {
         navigate('/payment', { state: { classInfo: classItem } })
     }
     return (
-        <div className="min-h-[59vh] md:pt-20 pt-12">
+        <div className="min-h-[59vh] md:pb-20 pb-12">
             <Helmet>
                 <title>{title && title} | QuillAcademy - Gateway to Learning</title>
             </Helmet>
+            <div className="md:py-20 py-12 bg-[#3871C1] md:mb-16 mb-12">
+                <h2 className="text-center capitalize text-white text-[38px] md:text-[52px] md:leading-[80px] leading-[55px]">{category} Classes</h2>
+                <div className="breadcrumbs">
+                    <ul className="text-white justify-center flex-wrap gap-y-3">
+                        <li><Link to='/'><FaHome className="mr-1"></FaHome> Home</Link></li>
+                        <li><Link to='/classes'> Classes</Link></li>
+                        <li><Link to={`/categories/${category}`} className="capitalize">{category}</Link></li>
+                        <li><p className="capitalize">{title}</p></li>
+                    </ul>
+                </div>
+            </div>
             <Container>
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-6 md:mb-20 mb-12">
-                    <div className="col-span-4 border rounded-md p-10">
+                    <div className="col-span-4 border rounded-md md:p-10 p-5 h-fit">
                         <h3 className="md:text-4xl text-2xl mb-2">{title}</h3>
                         <div className="space-y-2">
                             <p className="text-lg">{short_description}</p>
@@ -85,28 +99,29 @@ const ClassDetails = () => {
                             <p><span className="font-semibold">Enrolled Students: </span> {enrolled_students}</p>
                             <p className="font-semibold"><span className="font-semibold">Category: </span> <Link to={`/categories/${category}`} className="underline">{category}</Link></p>
                         </div>
-                        <div className='space-x-3'>
-                            <div className="my-3 font-semibold">Share On:</div>
-                            <FacebookShareButton url={pageUrl} quote={shareTitle}>
-                                <img className='w-[40px]' src={faceBookImg} alt="" />
-                            </FacebookShareButton>
-                            <TwitterShareButton url={pageUrl} hashtags={['DiveIntoKnowledge', 'Course']} title={shareTitle + shareDescription}>
-                                <img className='w-[40px]' src={twitterImg} alt="" />
-                            </TwitterShareButton>
-                            <TelegramShareButton>
-                                <img className='w-[40px]' src={telegramImg} alt="" />
-                            </TelegramShareButton>
-                            <WhatsappShareButton url={pageUrl} title={shareTitle + shareDescription}>
-                                <img className='w-[40px]' src={whatsappImg} alt="" />
-                            </WhatsappShareButton>
-                        </div>
+
                     </div>
-                    <div className="col-span-2 border rounded-md">
+                    <div className="col-span-4 md:col-span-2 border rounded-md h-fit">
                         <img className="" src={image} alt="" />
                         <div className="p-4 space-y-2">
                             <p><span className="font-semibold">Price: </span>${price}</p>
                             <div onClick={handleNavigate}>
                                 <Btn fullWidth={true} text='Buy This Course Now'></Btn>
+                            </div>
+                            <div className='space-x-3'>
+                                <div className="my-3 font-semibold">Share On:</div>
+                                <FacebookShareButton url={pageUrl} quote={shareTitle}>
+                                    <img className='w-[40px]' src={faceBookImg} alt="" />
+                                </FacebookShareButton>
+                                <TwitterShareButton url={pageUrl} hashtags={['DiveIntoKnowledge', 'Course']} title={shareTitle + shareDescription}>
+                                    <img className='w-[40px]' src={twitterImg} alt="" />
+                                </TwitterShareButton>
+                                <TelegramShareButton>
+                                    <img className='w-[40px]' src={telegramImg} alt="" />
+                                </TelegramShareButton>
+                                <WhatsappShareButton url={pageUrl} title={shareTitle + shareDescription}>
+                                    <img className='w-[40px]' src={whatsappImg} alt="" />
+                                </WhatsappShareButton>
                             </div>
                         </div>
                     </div>

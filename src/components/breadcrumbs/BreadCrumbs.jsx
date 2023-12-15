@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import PropTypes from 'prop-types'
 
 const BreadCrumbs = ({ category }) => {
-    console.log(category);
     return (
         <div className="md:py-20 py-12 bg-[#3871C1]">
             <h2 className="text-center capitalize text-white text-[38px] md:text-[52px] md:leading-[80px] leading-[55px]">{category} Classes</h2>
