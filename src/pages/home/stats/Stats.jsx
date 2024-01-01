@@ -23,19 +23,19 @@ const Stats = () => {
                 <div className="grid items-center justify-center md:grid-cols-2 grid-cols-1 gap-12 px-0 lg:px-28">
                     <div className="grid gap-y-6 grid-cols-2 gap-x-6">
                         <div className="text-center border py-7 rounded-md hover:rotate-2 duration-500">
-                            <p className="md:text-5xl font-semibold my-2 text-lg"><CountUp scrollSpyOnce={true} enableScrollSpy end={statCount?.userCount - 1} />+</p>
+                            <p className="md:text-5xl font-semibold my-2 text-3xl"><CountUp scrollSpyOnce={true} enableScrollSpy end={statCount?.userCount - 1} />+</p>
                             <h4 className="text-lg">Happy Users</h4>
                         </div>
                         <div className="text-center border py-7 rounded-md hover:rotate-2 duration-500">
-                            <p className="md:text-5xl font-semibold my-2 text-lg"><CountUp scrollSpyOnce={true} enableScrollSpy end={statCount?.classCount - 1} />+</p>
+                            <p className="md:text-5xl font-semibold my-2 text-3xl"><CountUp scrollSpyOnce={true} enableScrollSpy end={statCount?.classCount - 1} />+</p>
                             <h4 className="text-lg">Total Classes</h4>
                         </div>
                         <div className="text-center border py-7 rounded-md hover:rotate-2 duration-500">
-                            <p className="md:text-5xl font-semibold my-2 text-lg"><CountUp scrollSpyOnce={true} enableScrollSpy end={statCount?.enrollmentCount - 1} />+</p>
+                            <p className="md:text-5xl font-semibold my-2 text-3xl"><CountUp scrollSpyOnce={true} enableScrollSpy end={statCount?.enrollmentCount - 1} />+</p>
                             <h4 className="text-lg">Total Enrollment</h4>
                         </div>
                         <div className="text-center border py-7 rounded-md hover:rotate-2 duration-500">
-                            <p className="md:text-5xl font-semibold my-2 text-lg"><CountUp scrollSpyOnce={true} enableScrollSpy end={statCount?.assignmentCount - 1} />+</p>
+                            <p className="md:text-5xl font-semibold my-2 text-3xl"><CountUp scrollSpyOnce={true} enableScrollSpy end={statCount?.assignmentCount - 1} />+</p>
                             <h4 className="text-lg">Total Assignments</h4>
                         </div>
                     </div>

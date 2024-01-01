@@ -19,13 +19,12 @@ const EnrolledClassDetails = () => {
     const { user } = useAuth();
     const { register, handleSubmit } = useForm();
     const location = useLocation();
-    console.log(location);
 
     const handleFeedback = (data) => {
         data.image = user?.photoURL;
         data.name = user?.displayName;
         data.rating = rating;
-        console.log(data);
+        data.course = location?.state?.title;
         axiosSecure.post('/feedbacks', data)
             .then(res => {
                 console.log(res.data);
@@ -116,7 +115,7 @@ const EnrolledClassDetails = () => {
                 {/* code for modal  content */}
                 <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle rounded-none">
                     <div className="modal-box rounded-md">
-                        <h3 className="font-bold text-3xl text-center">Create an assignment now!</h3>
+                        <h3 className="font-bold text-3xl text-center">Submit your feedback now!</h3>
 
                         <form onSubmit={handleSubmit(handleFeedback)} className="space-y-3">
                             <div className="form-control">
@@ -150,7 +149,7 @@ const EnrolledClassDetails = () => {
                             </div>
 
                             <div className="md:col-span-2 col-span-1">
-                                <Btn text='Create Assignment ' fullWidth={true}></Btn>
+                                <Btn text='Submit Feedback' fullWidth={true}></Btn>
                             </div>
                         </form>
 

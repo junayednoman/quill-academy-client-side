@@ -21,7 +21,6 @@ import twitterImg from '../../assets/twitter.png'
 import whatsappImg from '../../assets/whatsapp.png'
 import telegramImg from '../../assets/telegram.png'
 import { useEffect, useState } from "react";
-import BreadCrumbs from "../../components/breadcrumbs/BreadCrumbs";
 import { FaHome } from "react-icons/fa";
 
 const ClassDetails = () => {
